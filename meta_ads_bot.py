@@ -2,7 +2,6 @@ import os
 import requests
 from datetime import datetime, timedelta
 
-# Config (giữ nguyên)
 BOT_TOKEN = "8603101291:AAGYsIGfCLGcqfby3oUk88ILOFRWMo8X2S4"
 CHAT_ID = "2077738684"
 AD_ACCOUNT_ID = "act_3635946859955819"
@@ -20,7 +19,7 @@ def main():
         "access_token": META_TOKEN,
         "date_preset": "yesterday",
         "level": "account",
-        "fields": "spend,impressions,reach,clicks,cpc,conversations,cost_per_conversation"
+        "fields": "spend,impressions,reach,clicks,cpc,messaging_conversations,cost_per_messaging_conversation"
     }
     resp = requests.get(url, params=params).json()
     
@@ -29,8 +28,8 @@ def main():
         spend = float(data.get("spend", 0))
         impressions = int(data.get("impressions", 0))
         clicks = int(data.get("clicks", 0))
-        conversations = int(data.get("conversations", 0))
-        cost_per_conv = float(data.get("cost_per_conversation", 0))
+        conv = int(data.get("messaging_conversations", 0))
+        cost_conv = float(data.get("cost_per_messaging_conversation", 0))
         
         report = f"""
 🔔 <b>META ADS REPORT</b>
@@ -39,14 +38,14 @@ def main():
 👁️ <b>Impressions:</b> {impressions:,}
 🖱️ <b>Clicks:</b> {clicks:,}
 
-💬 <b>Conversations:</b> {conversations:,}
-💸 <b>Cost/Conv:</b> {cost_per_conv:,.0f}đ
+💬 <b>Messaging Conversations:</b> {conv:,}
+💸 <b>Cost/Conversation:</b> {cost_conv:,.0f}đ
 
-🤖 GitHub Bot | {datetime.now().strftime('%d/%m %H:%M UTC')}
+🤖 GitHub Bot | {datetime.now().strftime('%d/%m %H:%M')}
         """.strip()
         
         send_telegram(report)
-        print("✅ Báo cáo mới (có Conversations) gửi thành công!")
+        print("✅ Báo cáo Conversations OK!")
     else:
         print(f"❌ Lỗi: {resp}")
 
