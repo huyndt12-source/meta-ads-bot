@@ -31,7 +31,7 @@ def main():
         clicks = int(data.get("clicks", 0))
         cpc = float(data.get("cpc", 0))
         cpm = float(data.get("cpm", 0))
-        ctr = float(data.get("ctr", 0)) * 100  # % format
+        ctr = float(data.get("ctr", 0))  # % format
         
         report = f"""
 🔔 <b>META ADS YESTERDAY</b>
