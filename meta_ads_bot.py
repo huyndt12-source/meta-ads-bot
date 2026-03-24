@@ -15,15 +15,14 @@ def send_telegram(text):
 
 def main():
     url = f"https://graph.facebook.com/v20.0/{AD_ACCOUNT_ID}/insights"
-   # Thay date_preset
-params = {
-    "access_token": META_TOKEN,
-    "date_preset": "data_max_time_range",  # TỚI HIỆN TẠI (từ đầu campaign)
-    # "date_preset": "today",              # Chỉ hôm nay
-    "level": "account",
-    "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
-}
-resp = requests.get(url, params=params).json()    
+    params = {
+        "access_token": META_TOKEN,
+        "date_preset": "yesterday",
+        "level": "account",
+        "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
+    }
+    resp = requests.get(url, params=params).json()
+    
     if "data" in resp:
         data = resp["data"][0]
         spend = float(data.get("spend", 0))
@@ -46,6 +45,7 @@ resp = requests.get(url, params=params).json()
 📊 <b>CPM:</b> {cpm:,.0f}đ
 🎯 <b>CTR:</b> {ctr:.2f}%
 
+✅ Bot hoàn hảo!
 {datetime.now().strftime('%H:%M %d/%m')}
         """.strip()
         
