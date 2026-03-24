@@ -23,8 +23,7 @@ params = {
     "level": "account",
     "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
 }
-    resp = requests.get(url, params=params).json()
-    
+resp = requests.get(url, params=params).json()    
     if "data" in resp:
         data = resp["data"][0]
         spend = float(data.get("spend", 0))
