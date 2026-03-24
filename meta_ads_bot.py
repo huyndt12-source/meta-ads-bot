@@ -6,10 +6,12 @@ BOT_TOKEN = "8603101291:AAGYsIGfCLGcqfby3oUk88ILOFRWMo8X2S4"
 CHAT_ID = "2077738684"
 AD_ACCOUNT_ID = "act_3635946859955819"
 META_TOKEN = os.getenv("META_TOKEN")
-OFFSET = 0
-def send_telegram(chat_id, text):
+
+def send_telegram(text):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    payload
+    payload = {"chat_id": CHAT_ID, "text": text, "parse_mode": "HTML"}
+    resp = requests.get(url, params=payload)
+    print(f"Telegram: {resp.json()}")
 
 def main():
     url = f"https://graph.facebook.com/v20.0/{AD_ACCOUNT_ID}/insights"
@@ -20,8 +22,9 @@ params = {
     # "date_preset": "today",              # Chỉ hôm nay
     "level": "account",
     "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
-}    
-
+}
+    resp = requests.get(url, params=params).json()
+    
     if "data" in resp:
         data = resp["data"][0]
         spend = float(data.get("spend", 0))
