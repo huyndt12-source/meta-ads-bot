@@ -21,6 +21,8 @@ def main():
         "level": "account",
         "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
     }
+    resp = requests.get(url, params=params).json()
+    
     if "data" in resp:
         data = resp["data"][0]
         spend = float(data.get("spend", 0))
@@ -29,10 +31,10 @@ def main():
         clicks = int(data.get("clicks", 0))
         cpc = float(data.get("cpc", 0))
         cpm = float(data.get("cpm", 0))
-        ctr = float(data.get("ctr", 0))  # % format
+        ctr = float(data.get("ctr", 0)) * 100  # % format
         
         report = f"""
-🔔 <b>META ADS Report</b>
+🔔 <b>META ADS YESTERDAY</b>
 <i>act_3635946859955819</i>
 
 💰 <b>Spend:</b> {spend:,.0f}đ
