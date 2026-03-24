@@ -21,6 +21,7 @@ params = {
     "level": "account",
     "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
 }    
+
     if "data" in resp:
         data = resp["data"][0]
         spend = float(data.get("spend", 0))
