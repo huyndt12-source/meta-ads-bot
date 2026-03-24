@@ -21,7 +21,7 @@ def main():
         "level": "account",
         "fields": "campaign_name,spend,impressions,reach,clicks,cpc,cpm,ctr",
         "filtering":[{
-        "field": "campaign.name", 
+        "field": "campaign_name", 
         "operator": "CONTAIN", 
         "value": "Fes"
         }]
