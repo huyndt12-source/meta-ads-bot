@@ -23,10 +23,6 @@ params = {
     "level": "account",
     "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
 }
-
-        "level": "account",
-        "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
-    }
     resp = requests.get(url, params=params).json()
     
     if "data" in resp:
