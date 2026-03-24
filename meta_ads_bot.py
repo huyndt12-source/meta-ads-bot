@@ -15,9 +15,15 @@ def send_telegram(text):
 
 def main():
     url = f"https://graph.facebook.com/v20.0/{AD_ACCOUNT_ID}/insights"
-    params = {
-        "access_token": META_TOKEN,
-        "date_preset": "yesterday",
+   # Thay date_preset
+params = {
+    "access_token": META_TOKEN,
+    "date_preset": "data_max_time_range",  # TỚI HIỆN TẠI (từ đầu campaign)
+    # "date_preset": "today",              # Chỉ hôm nay
+    "level": "account",
+    "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
+}
+
         "level": "account",
         "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
     }
