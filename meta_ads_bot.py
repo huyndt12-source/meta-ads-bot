@@ -19,7 +19,14 @@ def main():
         "access_token": META_TOKEN,
         "date_preset":"today",
         "level": "account",
-        "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
+        "fields": "campaign_name,spend,impressions,reach,clicks,cpc,cpm,ctr"
+        "filtering": [
+        {
+            "field": "campaign.name",
+            "operator": "CONTAIN",
+            "value": "Fes"
+        }
+        ]
     }
     resp = requests.get(url, params=params).json()
     
