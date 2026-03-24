@@ -20,11 +20,11 @@ def main():
         "date_preset":"today",
         "level": "account",
         "fields": "campaign_name,spend,impressions,reach,clicks,cpc,cpm,ctr",
-        filtering = [{
+        filtering = {
         "field": "campaign.name", 
         "operator": "CONTAIN", 
         "value": "Fes"
-        }]
+        }
     }
     resp = requests.get(url, params=params).json()
     
