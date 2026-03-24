@@ -36,7 +36,7 @@ params = {
         ctr = float(data.get("ctr", 0))  # % format
         
         report = f"""
-🔔 <b>META ADS YESTERDAY</b>
+🔔 <b>META ADS Report</b>
 <i>act_3635946859955819</i>
 
 💰 <b>Spend:</b> {spend:,.0f}đ
@@ -47,7 +47,6 @@ params = {
 📊 <b>CPM:</b> {cpm:,.0f}đ
 🎯 <b>CTR:</b> {ctr:.2f}%
 
-✅ Bot hoàn hảo!
 {datetime.now().strftime('%H:%M %d/%m')}
         """.strip()
         
