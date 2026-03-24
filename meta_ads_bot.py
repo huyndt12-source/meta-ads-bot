@@ -19,7 +19,7 @@ def main():
         "access_token": META_TOKEN,
         "date_preset":"today",
         "level": "account",
-        "fields": "campaign_name,spend,impressions,reach,clicks,cpc,cpm,ctr"
+        "fields": "campaign_name,spend,impressions,reach,clicks,cpc,cpm,ctr",
         filtering = [{
         "field": "campaign.name", 
         "operator": "CONTAIN", 
