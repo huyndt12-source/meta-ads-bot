@@ -19,7 +19,7 @@ def main():
         "access_token": META_TOKEN,
         "date_preset": "yesterday",
         "level": "account",
-        "fields": "spend,impressions,reach,clicks,cpc,messaging_conversations,cost_per_messaging_conversation"
+        "fields": "spend,impressions,reach,clicks,cpc,leads,cost_per_lead,messaging_conversations,cost_per_messaging_conversation"
     }
     resp = requests.get(url, params=params).json()
     
@@ -28,24 +28,26 @@ def main():
         spend = float(data.get("spend", 0))
         impressions = int(data.get("impressions", 0))
         clicks = int(data.get("clicks", 0))
-        conv = int(data.get("messaging_conversations", 0))
-        cost_conv = float(data.get("cost_per_messaging_conversation", 0))
+        leads = int(data.get("leads", 0))
+        conv_mess = int(data.get("messaging_conversations", 0))
+        cost_mess = float(data.get("cost_per_messaging_conversation", 0))
         
         report = f"""
-🔔 <b>META ADS REPORT</b>
+🔔 <b>META ADS FULL REPORT</b>
 
 💰 <b>Spend:</b> {spend:,.0f}đ
 👁️ <b>Impressions:</b> {impressions:,}
 🖱️ <b>Clicks:</b> {clicks:,}
+📝 <b>Leads:</b> {leads:,}
 
-💬 <b>Messaging Conversations:</b> {conv:,}
-💸 <b>Cost/Conversation:</b> {cost_conv:,.0f}đ
+💬 <b>Messenger Conversations:</b> {conv_mess:,}
+💸 <b>Cost/Messenger:</b> {cost_mess:,.0f}đ
 
 🤖 GitHub Bot | {datetime.now().strftime('%d/%m %H:%M')}
         """.strip()
         
         send_telegram(report)
-        print("✅ Báo cáo Conversations OK!")
+        print("✅ Messenger conversations OK!")
     else:
         print(f"❌ Lỗi: {resp}")
 
