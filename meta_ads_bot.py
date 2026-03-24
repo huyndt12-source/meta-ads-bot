@@ -32,6 +32,7 @@ def main():
         cpc = float(data.get("cpc", 0))
         cpm = float(data.get("cpm", 0))
         ctr = float(data.get("ctr", 0))  # % format
+        frequency = float(data.get("frequency", 0))  # ← THÊM dòng này
         
         report = f"""
 🔔 <b>META ADS YESTERDAY</b>
@@ -44,8 +45,8 @@ def main():
 💸 <b>CPC:</b> {cpc:,.0f}đ
 📊 <b>CPM:</b> {cpm:,.0f}đ
 🎯 <b>CTR:</b> {ctr:.2f}%
+📊 <b>Frequency:</b> {frequency:.2f}
 
-✅ Bot hoàn hảo!
 {datetime.now().strftime('%H:%M %d/%m')}
         """.strip()
         
