@@ -17,7 +17,7 @@ def main():
     url = f"https://graph.facebook.com/v20.0/{AD_ACCOUNT_ID}/insights"
     params = {
         "access_token": META_TOKEN,
-        "date_preset":"yesterday",
+        "date_preset":"today",
         "level": "account",
         "fields": "spend,impressions,reach,clicks,cpc,cpm,ctr"
     }
@@ -35,7 +35,7 @@ def main():
         frequency = float(data.get("frequency", 0))  # ← THÊM dòng này
         
         report = f"""
-🔔 <b>META ADS YESTERDAY</b>
+🔔 <b>META ADS TODAY</b>
 <i>act_3635946859955819</i>
 
 💰 <b>Spend:</b> {spend:,.0f}đ
