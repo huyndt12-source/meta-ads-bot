@@ -17,7 +17,7 @@ def main():
     url = f"https://graph.facebook.com/v20.0/{AD_ACCOUNT_ID}/insights"
     params = {
         "access_token": META_TOKEN,
-        "date_preset":"today",
+        "date_preset":"yesterday",
         "level": "account",
         "fields": "campaign_name,spend,impressions,reach,clicks,cpc,cpm,ctr",
     }
