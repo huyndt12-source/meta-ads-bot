@@ -1,7 +1,7 @@
 name: Meta Ads Daily Report
-on:
+oon:
   schedule:
-    - cron: '0 1,15 * * *'  # 8h sáng + 22h tối VN
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 jobs:
   report:
