@@ -19,7 +19,7 @@ def main():
         "access_token": META_TOKEN,
         "date_preset":"today",
         "level": "account",
-        "fields": "campaign_name,spend,impressions,reach,clicks,cpc,cpm,ctr,pages_messaging",
+        "fields": "campaign_name,spend,impressions,reach,clicks,cpc,cpm,ctr",
     }
     resp = requests.get(url, params=params).json()
     
@@ -33,7 +33,6 @@ def main():
         cpm = float(data.get("cpm", 0))
         ctr = float(data.get("ctr", 0))  # % format
         frequency = float(data.get("frequency", 0))  # ← THÊM dòng này
-        pages_messaging = float(data.get("pages_messaging",0))
         
         report = f"""
 🔔 <b>META ADS TODAY</b>
